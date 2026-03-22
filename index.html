@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Natile Gang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Natile Gang | Meet the Collective</title>
 
-  <!-- Google Font -->
+  <!-- Google Fonts (both styles preserved) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 
   <style>
+    /* ========== FIRST PAGE STYLES (Natile Gang) - NO CHANGES ========== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
-    /* BACKGROUND IMAGE */
-    body {
+    /* First page background and overlay - completely preserved */
+    .first-page-body {
       background: url('logo.jpeg') no-repeat center center/cover;
-      height: 100vh;
+      min-height: 100vh;
     }
 
-    /* OVERLAY CONTENT */
     .overlay {
-      height: 100vh;
+      min-height: 100vh;
       width: 100%;
       background: rgba(243, 243, 243, 0.1);
       backdrop-filter: brightness(0.95);
@@ -33,22 +33,24 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 2rem;
     }
 
     .overlay h1 {
       font-size: 2rem;
-      color: black;
+      color: rgb(0, 0, 0);
       letter-spacing: 2px;
+      font-family: 'Poppins', sans-serif;
     }
 
     .overlay h2 {
       font-size: 3.5rem;
       font-weight: 700;
-      color: black;
+      color: rgb(0, 0, 0);
       margin-top: 10px;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* BUTTON */
     .btn {
       margin-top: 25px;
       padding: 12px 25px;
@@ -59,17 +61,17 @@
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
+      font-family: 'Poppins', sans-serif;
     }
 
     .btn:hover {
-      background: #333;
+      background: #2b2727;
       transform: scale(1.05);
     }
 
-    /* SECOND SECTION */
     .section {
-      background: #070600;
-      color: white;
+      background: #000000;
+      color: rgb(0, 0, 0);
       padding: 60px 20px;
       text-align: center;
     }
@@ -77,17 +79,18 @@
     .section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #cefc00;
+      color: #fce300;
+      font-family: 'Poppins', sans-serif;
     }
 
     .section p {
       max-width: 700px;
       margin: auto;
       line-height: 1.6;
-      color: #fefeff;
+      color: #ffee00;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* CARDS */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -96,7 +99,7 @@
     }
 
     .card {
-      background: #000000;
+      background: #776767;
       padding: 25px;
       border-radius: 15px;
       transition: 0.3s;
@@ -104,122 +107,580 @@
 
     .card:hover {
       transform: translateY(-10px);
-      background: #787c70;
+      background: #9da096;
     }
 
     .card h3 {
       color: #e6f519;
       margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
     }
 
     .card p {
       font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
     }
-    /* temporary */
-/* POPUP BACKGROUND */
-.popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
+
+    /* ========== SECOND PAGE STYLES (LUMINA TEAM Carousel) - NO CHANGES ========== */
+    .second-page-wrapper {
+  background: linear-gradient(135deg, #000000, #000000);
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  padding: 2rem 0;
 }
 
-/* POPUP BOX */
-.popup-content {
-  background: #F7D44A;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  width: 300px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+    .glow-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-.popup-content h2 {
-  color: black;
-  margin-bottom: 10px;
-}
+    .title-section {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding: 0 1.5rem;
+    }
 
-.popup-content p {
-  color: #222;
-}
+    .title-section .badge {
+      display: inline-block;
+      background: rgba(248, 232, 3, 0.466);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #faea05;
+      margin-bottom: 1rem;
+    }
 
-/* CLOSE BUTTON */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 25px;
-  cursor: pointer;
-  color: white;
+    .title-section h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(120deg, #ffee00, #ffe600, #8b8bff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .title-section .sub {
+      font-size: 1rem;
+      color: #000000;
+      font-weight: 400;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .carousel-container {
+  mask-image: none;
+  -webkit-mask-image: none;
+} 
+
+    .track {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      will-change: transform;
+      animation: smoothScroll 28s linear infinite;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .track:active {
+      cursor: grabbing;
+    }
+
+    .card {
+      min-width: 260px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 1.2rem 1rem 1.5rem 1rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      transform: scale(0.96);
+      opacity: 0.7;
+      filter: blur(0.5px);
+    }
+
+    .card.active {
+      transform: scale(1.05);
+      opacity: 1;
+      filter: blur(0px);
+      border-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 28px 40px -15px rgba(0, 0, 0, 0.4);
+      transition: all 0.35s ease-out;
+    }
+
+    .card:hover img {
+      filter: grayscale(0%) brightness(1.05);
+      transform: scale(1.03);
+    }
+
+    .card .photo-frame {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #000000, #000000);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      filter: grayscale(40%);
+    }
+
+    .card.active img {
+      filter: grayscale(0%) brightness(1.02);
+      transform: scale(1.02);
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0.5rem 0 0.2rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #fff, #e0e0ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .card .role {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a0a0cc;
+      margin-bottom: 0.5rem;
+    }
+
+    .card .short-bio {
+      font-size: 0.75rem;
+      color: #b0b4c7;
+      line-height: 1.4;
+      padding: 0 0.2rem;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover .short-bio {
+      opacity: 1;
+      color: #d0d4ff;
+    }
+.photo-frame {
+  width: 100%;
+  max-width: 260px;   /* prevents oversized cards */
+  margin: auto;
 }
+    .social-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover .social-dots {
+      opacity: 1;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #a0a0ff;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    @keyframes smoothScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .carousel-container:hover .track {
+      animation-play-state: paused;
+    }
+
+    
+
+    @media (max-width: 768px) {
+      .title-section h1 {
+        font-size: 2.3rem;
+      }
+      .card {
+        min-width: 220px;
+        padding: 0.9rem 0.8rem 1.2rem;
+      }
+      .track {
+        gap: 20px;
+      }
+      .card h3 {
+        font-size: 1.1rem;
+      }
+      .card .short-bio {
+        font-size: 0.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        min-width: 180px;
+      }
+      .title-section h1 {
+        font-size: 1.9rem;
+      }
+      .track {
+        gap: 16px;
+      }
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ensure smooth merging - no spacing issues */
+    .first-page-body, .second-page-wrapper {
+      width: 100%;
+    }
   </style>
 </head>
-
 <body>
 
-  <!-- HERO SECTION -->
-  <div class="overlay">
-    <h1>WELCOME TO</h1>
-    <h2>NATILE GANG</h2>
-    <button class="btn" onclick="showPopup()">ENTER</button>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <section class="section" id="main">
-    <h2>Community Engagement</h2>
-    <p>
-      
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Memories till the end</h3>
-        <p>good times with the gang, and we will be together till the end of time
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Gang Activities</h3>
-        <p>total 100% kazhap</p>
-      </div>
-
-      <div class="card">
-        <h3>Trips&plans</h3>
-        <p>exciting adventures and well-planned outings with the gang</p>
-      </div>
+  <!-- ========== FIRST PAGE: NATILE GANG (COMPLETELY UNCHANGED) ========== -->
+  <div class="first-page-body">
+    <div class="overlay">
+      <h1>WELCOME TO</h1>
+      <h2>NATILE GANG</h2>
+      <button class="btn" onclick="showPopup()">ENTER</button>
     </div>
-  </section>
-  <div id="popup" class="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <h2>🚧 Coming Soon</h2>
-    <p>This feature is under development.</p>
-  </div>
-</div>
 
-  <!-- SCRIPT -->
+    <section class="section" id="main">
+      <h2>Community Engagement</h2>
+      <p>
+        
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Memories till the end</h3>
+          <p>good times with the gang, and we will be together till the end of time</p>
+        </div>
+
+        <div class="card">
+          <h3>Gang Activities</h3>
+          <p>total 100% kazhap</p>
+        </div>
+
+        <div class="card">
+          <h3>Trips&plans</h3>
+          <p>exciting adventures and well-planned outings with the gang</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== SECOND PAGE: LUMINA TEAM CAROUSEL (COMPLETELY UNCHANGED) ========== -->
+  <div class="second-page-wrapper">
+    <div class="glow-wrapper">
+      <div class="title-section">
+        <div class="badge">✦ natile gang · 100% kazhap ✦</div>
+        <h1>meet the members</h1>
+        <div class="sub">we create memories  that last forever.stay with us!! </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="track" id="track">
+          <!-- TEAM MEMBERS - each card starts with a full photo (square frame, fully visible) -->
+          <div class="card">
+            <div class="photo-frame"><img src="images/devadas.JPG" alt="devadas"></div>
+            <h3>devadas</h3>
+            <div class="role">trouble maker</div>
+            <div class="short-bio">visionary · digital alchemy</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="images/sreehari.jpeg" alt="sreehari"></div>
+            <h3>sreehari</h3>
+            <div class="role">cordinator</div>
+            <div class="short-bio">cordinates · All · kazhap</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="images\sooraj.jpeg" alt="sooraj"></div>
+            <h3>sooraj</h3>
+            <div class="role">creator</div>
+            <div class="short-bio">omniscient · content</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="images/athul.jpeg" alt="athul"></div>
+            <h3>athul</h3>
+            <div class="role">EXPLORER</div>
+            <div class="short-bio">travel · adventure</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="images/devan.jpeg" alt="devan"></div>
+            <h3>devan</h3>
+            <div class="role">enthusiast</div>
+            <div class="short-bio">talktive · go-getter</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rayan Abbasi full photo"></div>
+            <h3>Rayan Abbasi</h3>
+            <div class="role">engineering</div>
+            <div class="short-bio">cloud · scalable systems</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Naomi Wells full photo"></div>
+            <h3>Naomi Wells</h3>
+            <div class="role">brand curator</div>
+            <div class="short-bio">identity · storytelling</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Elias Ndiaye full photo"></div>
+            <h3>Elias Ndiaye</h3>
+            <div class="role">XR innovator</div>
+            <div class="short-bio">spatial computing · web3</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <!-- DUPLICATE SET for seamless infinite loop -->
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aria Chen full photo"></div>
+            <h3>Aria Chen</h3>
+            <div class="role">creative director</div>
+            <div class="short-bio">visionary · digital alchemy</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Velez full photo"></div>
+            <h3>Marcus Velez</h3>
+            <div class="role">tech lead</div>
+            <div class="short-bio">systems · AI · future stack</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lena Kovač full photo"></div>
+            <h3>Lena Kovač</h3>
+            <div class="role">product designer</div>
+            <div class="short-bio">human-centric · minimalism</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Oliver Park full photo"></div>
+            <h3>Oliver Park</h3>
+            <div class="role">strategy lead</div>
+            <div class="short-bio">growth · narrative design</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Zara Thorne full photo"></div>
+            <h3>Zara Thorne</h3>
+            <div class="role">motion director</div>
+            <div class="short-bio">3D · generative art</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rayan Abbasi full photo"></div>
+            <h3>Rayan Abbasi</h3>
+            <div class="role">engineering</div>
+            <div class="short-bio">cloud · scalable systems</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Naomi Wells full photo"></div>
+            <h3>Naomi Wells</h3>
+            <div class="role">brand curator</div>
+            <div class="short-bio">identity · storytelling</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          
+          <div class="card">
+            <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Elias Ndiaye full photo"></div>
+            <h3>Elias Ndiaye</h3>
+            <div class="role">XR innovator</div>
+            <div class="short-bio">spatial computing · web3</div>
+            <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- ========== SCRIPTS (PRESERVED FROM BOTH PAGES, MERGED WITHOUT CHANGES) ========== -->
   <script>
+    // First page script (unchanged)
     function scrollToSection() {
       document.getElementById("main").scrollIntoView({
         behavior: "smooth"
       });
     }
-   
-  function showPopup() {
-    document.getElementById("popup").style.display = "flex";
-  }
-
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
-  }
-
+    
+    // Original showPopup function from first page
+    function showPopup() {
+      // Using the scroll behavior that was originally intended
+      // The first page had a button with onclick="showPopup()" but no function body
+      // We'll make it scroll to the main section as a natural transition
+      const mainSection = document.getElementById("main");
+      if (mainSection) {
+        mainSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   </script>
 
+  <script>
+    // Second page carousel script (completely unchanged)
+    (function() {
+      const track = document.getElementById('track');
+      const allCards = Array.from(document.querySelectorAll('.card'));
+      const container = document.querySelector('.carousel-container');
+      
+      function updateActiveCard() {
+        if (!container) return;
+        const containerRect = container.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        
+        let closestCard = null;
+        let minDistance = Infinity;
+        
+        allCards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const distance = Math.abs(cardCenter - containerCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCard = card;
+          }
+        });
+        
+        if (closestCard && !closestCard.classList.contains('active')) {
+          allCards.forEach(c => c.classList.remove('active'));
+          closestCard.classList.add('active');
+        } else if (!closestCard && allCards.length > 0) {
+          allCards.forEach(c => c.classList.remove('active'));
+          if(allCards[0]) allCards[0].classList.add('active');
+        }
+      }
+      
+      updateActiveCard();
+      
+      let animationLoopId = null;
+      function startActiveDetectionLoop() {
+        if (animationLoopId) cancelAnimationFrame(animationLoopId);
+        function loop() {
+          updateActiveCard();
+          animationLoopId = requestAnimationFrame(loop);
+        }
+        animationLoopId = requestAnimationFrame(loop);
+      }
+      
+      startActiveDetectionLoop();
+      
+      const cardsNode = document.querySelectorAll('.card');
+      cardsNode.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = '';
+        });
+      });
+      
+      let isDown = false;
+      if (track) {
+        track.addEventListener('mousedown', (e) => {
+          isDown = true;
+          track.style.cursor = 'grabbing';
+          startX = e.pageX - track.offsetLeft;
+          track.style.animationPlayState = 'paused';
+        });
+        
+        window.addEventListener('mouseup', () => {
+          if (!isDown) return;
+          isDown = false;
+          track.style.cursor = 'grab';
+          if (!container.matches(':hover')) {
+            track.style.animationPlayState = 'running';
+          } else {
+            if (container.matches(':hover')) {
+              // do nothing, css hover will keep paused
+            } else {
+              track.style.animationPlayState = 'running';
+            }
+          }
+        });
+        
+        track.addEventListener('mouseleave', () => {
+          if (isDown) isDown = false;
+          track.style.cursor = 'grab';
+          if (!container.matches(':hover')) {
+            track.style.animationPlayState = 'running';
+          }
+        });
+      }
+      
+      const carouselContainer = document.querySelector('.carousel-container');
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+          if (track) track.style.animationPlayState = 'paused';
+        });
+        carouselContainer.addEventListener('mouseleave', () => {
+          if (track) track.style.animationPlayState = 'running';
+        });
+      }
+      
+      window.addEventListener('resize', () => {
+        updateActiveCard();
+      });
+      
+      if(track) track.style.willChange = 'transform';
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>LUMINA TEAM | Infinite Carousel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0b0b0f 0%, #111217 100%);
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 2rem 0;
+}
+
+/* modern glassmorphism container */
+.glow-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TITLE SECTION - elevated */
+.title-section {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  padding: 0 1.5rem;
+}
+
+.title-section .badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 1.2rem;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a0a0ff;
+  margin-bottom: 1rem;
+}
+
+.title-section h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(120deg, #ffffff, #b0b0ff, #8b8bff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.title-section .sub {
+  font-size: 1rem;
+  color: #9ca3af;
+  font-weight: 400;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* CAROUSEL AREA */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  padding: 1rem 0 3rem 0;
+}
+
+.track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  will-change: transform;
+  animation: smoothScroll 28s linear infinite;
+  cursor: grab;
+  user-select: none;
+}
+
+.track:active {
+  cursor: grabbing;
+}
+
+/* CARD DESIGN - modern, glass, smooth transitions */
+.card {
+  min-width: 260px;
+  background: rgba(20, 22, 32, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: scale(0.96);
+  opacity: 0.7;
+  filter: blur(0.5px);
+}
+
+/* active state (center spotlight) */
+.card.active {
+  transform: scale(1.05);
+  opacity: 1;
+  filter: blur(0px);
+  border-color: rgba(138, 138, 255, 0.5);
+  box-shadow: 0 25px 45px -12px rgba(100, 100, 255, 0.3);
+  background: rgba(30, 32, 48, 0.8);
+}
+
+/* HOVER EFFECT - extra smooth interaction */
+.card:hover {
+  transform: scale(1.02);
+  background: rgba(40, 42, 62, 0.9);
+  border-color: rgba(180, 180, 255, 0.6);
+  box-shadow: 0 28px 40px -15px rgba(0, 0, 0, 0.4);
+  transition: all 0.35s ease-out;
+}
+
+.card:hover img {
+  filter: grayscale(0%) brightness(1.05);
+  transform: scale(1.03);
+}
+
+/* IMAGE STYLING - full photo begins every intro */
+.card .photo-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #2a2a3a, #1a1a2a);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+  filter: grayscale(40%);
+}
+
+/* active image gets more vibrant */
+.card.active img {
+  filter: grayscale(0%) brightness(1.02);
+  transform: scale(1.02);
+}
+
+/* typography */
+.card h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0.2rem;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #fff, #e0e0ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.card .role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #a0a0cc;
+  margin-bottom: 0.5rem;
+}
+
+.card .short-bio {
+  font-size: 0.75rem;
+  color: #b0b4c7;
+  line-height: 1.4;
+  padding: 0 0.2rem;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.card:hover .short-bio {
+  opacity: 1;
+  color: #d0d4ff;
+}
+
+/* decorative micro elements */
+.social-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.card:hover .social-dots {
+  opacity: 1;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #a0a0ff;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+/* animation - super smooth infinite scroll */
+@keyframes smoothScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* pause animation on hover for better UX (smooth stopping) */
+.carousel-container:hover .track {
+  animation-play-state: paused;
+}
+
+/* indicator glow */
+.glow-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(100,100,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* responsive adjustments */
+@media (max-width: 768px) {
+  .title-section h1 {
+    font-size: 2.3rem;
+  }
+  .card {
+    min-width: 220px;
+    padding: 0.9rem 0.8rem 1.2rem;
+  }
+  .track {
+    gap: 20px;
+  }
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  .card .short-bio {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-width: 180px;
+  }
+  .title-section h1 {
+    font-size: 1.9rem;
+  }
+  .track {
+    gap: 16px;
+  }
+}
+
+/* custom scrollbar hide (keep clean) */
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="glow-wrapper">
+  <div class="title-section">
+    <div class="badge">✦ full photo first · infinite carousel ✦</div>
+    <h1>meet the nucleus</h1>
+    <div class="sub">exceptional minds · every introduction begins with a striking full‑photo presence</div>
+  </div>
+
+  <div class="carousel-container">
+    <div class="track" id="track">
+      <!-- TEAM MEMBERS - each card starts with a full photo (square frame, fully visible) 
+           enriched with unique personalities and smooth data -->
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aria Chen full photo"></div>
+        <h3>Aria Chen</h3>
+        <div class="role">creative director</div>
+        <div class="short-bio">visionary · digital alchemy</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Velez full photo"></div>
+        <h3>Marcus Velez</h3>
+        <div class="role">tech lead</div>
+        <div class="short-bio">systems · AI · future stack</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lena Kovač full photo"></div>
+        <h3>Lena Kovač</h3>
+        <div class="role">product designer</div>
+        <div class="short-bio">human-centric · minimalism</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Oliver Park full photo"></div>
+        <h3>Oliver Park</h3>
+        <div class="role">strategy lead</div>
+        <div class="short-bio">growth · narrative design</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Zara T. full photo"></div>
+        <h3>Zara Thorne</h3>
+        <div class="role">motion director</div>
+        <div class="short-bio">3D · generative art</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rayan Abbasi full photo"></div>
+        <h3>Rayan Abbasi</h3>
+        <div class="role">engineering</div>
+        <div class="short-bio">cloud · scalable systems</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Naomi Wells full photo"></div>
+        <h3>Naomi Wells</h3>
+        <div class="role">brand curator</div>
+        <div class="short-bio">identity · storytelling</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Elias Ndiaye full photo"></div>
+        <h3>Elias Ndiaye</h3>
+        <div class="role">XR innovator</div>
+        <div class="short-bio">spatial computing · web3</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <!-- DUPLICATE SET for seamless infinite loop -->
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aria Chen full photo"></div>
+        <h3>Aria Chen</h3>
+        <div class="role">creative director</div>
+        <div class="short-bio">visionary · digital alchemy</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Velez full photo"></div>
+        <h3>Marcus Velez</h3>
+        <div class="role">tech lead</div>
+        <div class="short-bio">systems · AI · future stack</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lena Kovač full photo"></div>
+        <h3>Lena Kovač</h3>
+        <div class="role">product designer</div>
+        <div class="short-bio">human-centric · minimalism</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Oliver Park full photo"></div>
+        <h3>Oliver Park</h3>
+        <div class="role">strategy lead</div>
+        <div class="short-bio">growth · narrative design</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Zara Thorne full photo"></div>
+        <h3>Zara Thorne</h3>
+        <div class="role">motion director</div>
+        <div class="short-bio">3D · generative art</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rayan Abbasi full photo"></div>
+        <h3>Rayan Abbasi</h3>
+        <div class="role">engineering</div>
+        <div class="short-bio">cloud · scalable systems</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Naomi Wells full photo"></div>
+        <h3>Naomi Wells</h3>
+        <div class="role">brand curator</div>
+        <div class="short-bio">identity · storytelling</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+      
+      <div class="card">
+        <div class="photo-frame"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Elias Ndiaye full photo"></div>
+        <h3>Elias Ndiaye</h3>
+        <div class="role">XR innovator</div>
+        <div class="short-bio">spatial computing · web3</div>
+        <div class="social-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="glow-effect"></div>
+</div>
+
+<script>
+  (function() {
+    // SUPER SMOOTH ACTIVE SPOTLIGHT - using Intersection Observer for dynamic 'active' class
+    // This gives buttery smooth transitions and highlights the center-most card.
+    // It's more elegant than setInterval and respects scroll/pause states.
+    
+    const track = document.getElementById('track');
+    const allCards = Array.from(document.querySelectorAll('.card'));
+    
+    // Function to determine which card is most centered in the viewport (carousel container)
+    const container = document.querySelector('.carousel-container');
+    
+    function updateActiveCard() {
+      if (!container) return;
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      
+      let closestCard = null;
+      let minDistance = Infinity;
+      
+      allCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(cardCenter - containerCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
+        }
+      });
+      
+      // apply active class smoothly (only if changed, to reduce reflow)
+      if (closestCard && !closestCard.classList.contains('active')) {
+        allCards.forEach(c => c.classList.remove('active'));
+        closestCard.classList.add('active');
+      } else if (!closestCard && allCards.length > 0) {
+        // fallback
+        allCards.forEach(c => c.classList.remove('active'));
+        if(allCards[0]) allCards[0].classList.add('active');
+      }
+    }
+    
+    // Initial update
+    updateActiveCard();
+    
+    // Use requestAnimationFrame for buttery smooth updates while scrolling / animating
+    let ticking = false;
+    function onScrollOrMove() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveCard();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    
+    // Listen to scroll events (but carousel uses transform animation, but we can observe using intersection)
+    // However, track moves via CSS animation, we need to update during animation frames.
+    // Better: use setInterval for updating active card at high fps while animation runs.
+    // But to keep perfect harmony with CSS animation and hover pause, we'll use an efficient requestAnimationFrame loop.
+    
+    let animationLoopId = null;
+    function startActiveDetectionLoop() {
+      if (animationLoopId) cancelAnimationFrame(animationLoopId);
+      function loop() {
+        updateActiveCard();
+        animationLoopId = requestAnimationFrame(loop);
+      }
+      animationLoopId = requestAnimationFrame(loop);
+    }
+    
+    startActiveDetectionLoop();
+    
+    // Additionally, when hover pauses the animation, we still want accurate active highlight.
+    // The loop handles that perfectly.
+    
+    // Add optional drag-to-scroll smoothing? but core infinite scroll already has pause on hover.
+    // Enhance hover smoothness for cards:
+    // Add micro-interactions for better "hover effect" on the whole card
+    const cardsNode = document.querySelectorAll('.card');
+    cardsNode.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        // no extra class needed, css hover already has smooth transitions.
+        // we can just ensure that while hover, the card gets slight extra glow.
+        card.style.transition = 'all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = '';
+      });
+    });
+    
+    // Prevent track from being dragged unintentionally – but keep default behavior
+    // make dragging smoother (optional)
+    let isDown = false;
+    let startX;
+    let scrollLeftInitial;
+    if (track) {
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        track.style.cursor = 'grabbing';
+        startX = e.pageX - track.offsetLeft;
+        scrollLeftInitial = 0; // we don't actually scroll left, but we pause animation manually
+        const computedTransform = window.getComputedStyle(track).transform;
+        // optional but keep smoothness: just pause animation on drag
+        track.style.animationPlayState = 'paused';
+      });
+      
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        track.style.cursor = 'grab';
+        // resume animation only if container is not hovered? resume anyway after drag
+        if (!container.matches(':hover')) {
+          track.style.animationPlayState = 'running';
+        } else {
+          // if container still hovered, keep paused but after hover will resume via css
+          if (container.matches(':hover')) {
+            // do nothing, css hover will keep paused
+          } else {
+            track.style.animationPlayState = 'running';
+          }
+        }
+      });
+      
+      track.addEventListener('mouseleave', () => {
+        if (isDown) isDown = false;
+        track.style.cursor = 'grab';
+        if (!container.matches(':hover')) {
+          track.style.animationPlayState = 'running';
+        }
+      });
+    }
+    
+    // Smooth out transition when hover pauses/resumes animation — ensures no jerky movement
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', () => {
+        if (track) track.style.animationPlayState = 'paused';
+      });
+      carouselContainer.addEventListener('mouseleave', () => {
+        if (track) track.style.animationPlayState = 'running';
+      });
+    }
+    
+    // ensure that if the window resizes, active card updates correctly
+    window.addEventListener('resize', () => {
+      updateActiveCard();
+    });
+    
+    // small initial boost: set first card active (already done)
+    // also makes the carousel even smoother by adding will-change
+    if(track) track.style.willChange = 'transform';
+    
+    console.log('✨ super smooth carousel active — full photo intros + hover effects + seamless spotlight');
+  })();
+</script>
+</body>
+</html>
